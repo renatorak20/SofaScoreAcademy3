@@ -1,15 +1,15 @@
 package com.renato.sofascoreacademy3.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
+import android.view.*
+import android.widget.*
+import androidx.compose.ui.node.getOrAddAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 import com.renato.sofascoreacademy3.R
+import com.renato.sofascoreacademy3.databinding.FragmentCreateCompanyBinding
 import com.renato.sofascoreacademy3.entities.Company
 
 class CreateCompanyFragment : Fragment() {
@@ -28,26 +28,34 @@ class CreateCompanyFragment : Fragment() {
     private lateinit var yearField: EditText
     private lateinit var createButton: Button
 
+    private lateinit var menu:AutoCompleteTextView
+    private lateinit var spinnerAdapter:ArrayAdapter<String>
+
     private lateinit var fields: ArrayList<EditText>
+
+    private lateinit var binding: FragmentCreateCompanyBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_create_company, container, false)
 
-        nameField = view.findViewById(R.id.name_field)
-        addressField = view.findViewById(R.id.address_field)
-        cityField = view.findViewById(R.id.city_field)
-        countryField = view.findViewById(R.id.country_field)
-        phoneField = view.findViewById(R.id.phone_field)
-        emailField = view.findViewById(R.id.email_field)
-        websiteField = view.findViewById(R.id.website_field)
-        industryField = view.findViewById(R.id.industry_field)
-        descriptionField = view.findViewById(R.id.description_field)
-        yearField = view.findViewById(R.id.year_field)
-        createButton = view.findViewById(R.id.button)
+        binding = FragmentCreateCompanyBinding.inflate(inflater, container, false)
+
+        nameField = binding.nameField
+        addressField = binding.addressField
+        cityField = binding.cityField
+        countryField = binding.countryField
+        phoneField = binding.phoneField
+        emailField = binding.emailField
+        websiteField = binding.websiteField
+        industryField = binding.industryField
+        descriptionField = binding.descriptionField
+        yearField = binding.yearField
+        createButton = binding.button
+        menu = binding.autoCompleteTextView
+
 
         viewModel = ViewModelProvider(requireActivity())[CompanyViewModel::class.java]
 
@@ -57,7 +65,16 @@ class CreateCompanyFragment : Fragment() {
             industryField
         )
 
-        return view
+        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, resources.getStringArray(R.array.continents))
+        menu.setAdapter(spinnerAdapter)
+
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, resources.getStringArray(R.array.continents))
+        menu.setAdapter(spinnerAdapter)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,7 +84,7 @@ class CreateCompanyFragment : Fragment() {
             if (areEmpty(fields)) {
                 Snackbar.make(view, "Please fill out all fields!", Snackbar.LENGTH_SHORT).show()
             } else {
-                val newCompany = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString())
+                val newCompany = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString(), "")
                 viewModel.addCompany(newCompany)
                 resetFields(fields)
             }

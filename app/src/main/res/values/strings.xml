@@ -17,5 +17,15 @@
     <string name="create_button">Create</string>
 
     <string name="create_company_title">Create a company</string>
+    <string name="continent">Continent</string>
 
+    <string-array name="continents">
+        <item name="europe">Europe</item>
+        <item name="africa">Africa</item>
+        <item name="asia">Asia</item>
+        <item name="north_america">North America</item>
+        <item name="south_america">South America</item>
+        <item name="antarctica">Antarctica</item>
+        <item name="australia">Australia</item>
+    </string-array>
 </resources>

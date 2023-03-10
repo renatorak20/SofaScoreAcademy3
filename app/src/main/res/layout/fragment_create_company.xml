@@ -22,7 +22,6 @@
                 android:textSize="30sp"
                 android:text="@string/create_company_title"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/name_field"
                 android:layout_width="161dp"
@@ -33,7 +32,6 @@
                 android:textColorHint="#757575"
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/address_field"
                 android:layout_width="161dp"
@@ -44,7 +42,6 @@
                 android:textColorHint="#757575"
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/city_field"
                 android:layout_width="161dp"
@@ -55,7 +52,6 @@
                 android:textColorHint="#757575"
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/country_field"
                 android:layout_width="161dp"
@@ -66,7 +62,6 @@
                 android:textColorHint="#757575"
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/phone_field"
                 android:layout_width="161dp"
@@ -77,7 +72,6 @@
                 android:textColorHint="#757575"
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/email_field"
                 android:layout_width="161dp"
@@ -88,7 +82,6 @@
                 android:textColorHint="#757575"
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/website_field"
                 android:layout_width="161dp"
@@ -99,7 +92,6 @@
                 android:textColorHint="#757575"
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/industry_field"
                 android:layout_width="161dp"
@@ -110,7 +102,6 @@
                 android:minHeight="48dp"
                 android:textColorHint="#757575"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/description_field"
                 android:layout_width="161dp"
@@ -121,7 +112,6 @@
                 android:textColorHint="#757575"
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
-
             <EditText
                 android:id="@+id/year_field"
                 android:layout_width="161dp"
@@ -133,12 +123,32 @@
                 android:importantForAutofill="no"
                 android:layout_marginTop="20dp"/>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:text="Select continent"
+                    android:dropDownHeight="300dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="100dp"
+                android:padding="10dp"
                 android:text="@string/create_button" />
 
         </LinearLayout>
