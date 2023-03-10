@@ -11,8 +11,8 @@ class Company(
     val industry: String,
     val description: String,
     val foundedYear: String,
-    val continent: String,
-    val size:String
+    val continent: Continent,
+    val type:String
 ){
 
     override fun toString(): String {

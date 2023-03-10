@@ -11,6 +11,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.renato.sofascoreacademy3.R
 import com.renato.sofascoreacademy3.databinding.FragmentCreateCompanyBinding
 import com.renato.sofascoreacademy3.entities.Company
+import com.renato.sofascoreacademy3.entities.Continent
 
 class CreateCompanyFragment : Fragment() {
 
@@ -59,11 +60,7 @@ class CreateCompanyFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity())[CompanyViewModel::class.java]
 
-        fields = arrayListOf(
-            nameField, addressField, phoneField, emailField, websiteField,
-            cityField, countryField, descriptionField, yearField,
-            industryField
-        )
+
 
 
 
@@ -86,10 +83,14 @@ class CreateCompanyFragment : Fragment() {
             if (areEmpty(fields)) {
                 Snackbar.make(view, "Please fill out all fields!", Snackbar.LENGTH_SHORT).show()
             } else {
-                val newCompany = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString(), "", "")
-                viewModel.addCompany(newCompany)
+                //val newCompany = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString(), "", "")
+                //viewModel.addCompany(newCompany)
                 resetFields(fields)
             }
+        }
+
+        for(i in 0..15){
+            viewModel.addCompany(Company("", "", "", "", "", "", "", "", "", "", Continent.AFRICA, ""))
         }
     }
 

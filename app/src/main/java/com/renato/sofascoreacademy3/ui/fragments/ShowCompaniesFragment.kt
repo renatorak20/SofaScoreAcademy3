@@ -4,20 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.divider.MaterialDivider
 import com.renato.sofascoreacademy3.R
 import com.renato.sofascoreacademy3.databinding.FragmentShowCompaniesBinding
+import com.renato.sofascoreacademy3.entities.Company
 
 class ShowCompaniesFragment : Fragment() {
 
     private lateinit var viewModel: CompanyViewModel
-    private lateinit var linearLayout: LinearLayout
-
+    private lateinit var listView: ListView
     private lateinit var binding: FragmentShowCompaniesBinding
+    private lateinit var adapter:ArrayAdapter<Company>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,21 +30,25 @@ class ShowCompaniesFragment : Fragment() {
 
         binding = FragmentShowCompaniesBinding.inflate(inflater, container, false)
 
-        linearLayout = binding.linearLayout
+        listView = binding.listView
+
+        adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value!!)
+        for(item in viewModel.companies.value!!){
+            println(item)
+        }
+        listView.adapter = adapter
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel.getList().observe(viewLifecycleOwner) { list ->
-            linearLayout.removeAllViews()
-            list.forEach { item ->
-                val textView = TextView(requireContext())
-                textView.text = item.toString()
-                linearLayout.addView(textView)
-                linearLayout.addView(MaterialDivider(requireContext()))
-            }
+            adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value!!)
+            listView.adapter = adapter
+            adapter.notifyDataSetChanged()
         }
+
     }
 }
