@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.CreateCompanyFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="@string/create_company_title"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/name_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/address_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/address"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/city_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/city"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/country_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/country"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/phone_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/email_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/website_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/website"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/industry_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/industry"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/description_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/description"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/year_field"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/year_founded"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:importantForAutofill="no"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/create_button" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

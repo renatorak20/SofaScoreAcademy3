@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">SofaScoreAcademy3</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="create_title">Create</string>
+    <string name="show_title">Show</string>
+
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="website">Website</string>
+    <string name="city">City</string>
+    <string name="year_founded">Year founded</string>
+    <string name="description">Description</string>
+    <string name="country">Country</string>
+    <string name="industry">Industry</string>
+
+    <string name="create_button">Create</string>
+
+    <string name="create_company_title">Create a company</string>
+
 </resources>
