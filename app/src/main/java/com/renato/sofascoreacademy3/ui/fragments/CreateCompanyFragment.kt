@@ -3,7 +3,8 @@ package com.renato.sofascoreacademy3.ui.fragments
 import android.os.Bundle
 import android.view.*
 import android.widget.*
-import androidx.compose.ui.node.getOrAddAdapter
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -29,10 +30,12 @@ class CreateCompanyFragment : Fragment() {
     private lateinit var yearField: EditText
     private lateinit var createButton: Button
 
-    private lateinit var menu:AutoCompleteTextView
-    private lateinit var spinnerAdapter:ArrayAdapter<String>
+    private lateinit var spinner:Spinner
+    private lateinit var spinnerAdapter:ArrayAdapter<Continent>
 
-    private lateinit var fields: ArrayList<EditText>
+    private lateinit var radioGroup: ViewGroup
+
+    private lateinit var constraintLayout: ConstraintLayout
 
     private lateinit var binding: FragmentCreateCompanyBinding
 
@@ -55,56 +58,57 @@ class CreateCompanyFragment : Fragment() {
         descriptionField = binding.descriptionField
         yearField = binding.yearField
         createButton = binding.button
-        menu = binding.autoCompleteTextView
+        spinner = binding.spinner
 
+        constraintLayout = binding.constraintLayout
+
+        radioGroup = binding.radioGroup
 
         viewModel = ViewModelProvider(requireActivity())[CompanyViewModel::class.java]
-
-
-
-
 
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, resources.getStringArray(R.array.continents))
-        menu.setAdapter(spinnerAdapter)
+        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, Continent.values())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, resources.getStringArray(R.array.continents))
-        menu.setAdapter(spinnerAdapter)
+        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, Continent.values())
+        spinner.adapter = spinnerAdapter
 
         createButton.setOnClickListener {
-            if (areEmpty(fields)) {
-                Snackbar.make(view, "Please fill out all fields!", Snackbar.LENGTH_SHORT).show()
-            } else {
-                //val newCompany = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString(), "", "")
-                //viewModel.addCompany(newCompany)
-                resetFields(fields)
+            if(constraintLayout.areAllFieldsValid()){
+                val company = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString(), spinner.selectedItem.toString(), binding.root.findViewById<RadioButton>(binding.radioGroup.checkedRadioButtonId).text.toString())
+                viewModel.addCompany(company)
+                constraintLayout.resetFields()
             }
         }
 
-        for(i in 0..15){
-            viewModel.addCompany(Company("", "", "", "", "", "", "", "", "", "", Continent.AFRICA, ""))
-        }
+
     }
 
-    private fun areEmpty(fields: List<EditText>): Boolean {
-        for (field in fields) {
-            if (field.text.toString() == "") {
-                return true
+    private fun ConstraintLayout.areAllFieldsValid(): Boolean{
+        this.children.filterIsInstance<EditText>().forEach {
+            if(it.isEmpty()){
+                Snackbar.make(this, "Please fill out all fields!", Snackbar.LENGTH_SHORT).show()
+                return false
             }
+        }
+        return true
+    }
+    private fun ConstraintLayout.resetFields() {
+        this.children.filterIsInstance<EditText>().forEach {
+            it.text.clear()
+        }
+    }
+    private fun EditText.isEmpty() : Boolean{
+        if(this.text.toString() == ""){
+            return true
         }
         return false
-    }
-    private fun resetFields(fields: List<EditText>) {
-        for (field in fields) {
-            field.text = null
-        }
     }
 }

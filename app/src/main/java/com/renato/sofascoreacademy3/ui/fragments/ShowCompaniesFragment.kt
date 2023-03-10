@@ -32,10 +32,7 @@ class ShowCompaniesFragment : Fragment() {
 
         listView = binding.listView
 
-        adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value!!)
-        for(item in viewModel.companies.value!!){
-            println(item)
-        }
+        adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value ?: mutableListOf())
         listView.adapter = adapter
 
         return binding.root
@@ -45,7 +42,7 @@ class ShowCompaniesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getList().observe(viewLifecycleOwner) { list ->
-            adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value!!)
+            adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value ?: mutableListOf())
             listView.adapter = adapter
             adapter.notifyDataSetChanged()
         }

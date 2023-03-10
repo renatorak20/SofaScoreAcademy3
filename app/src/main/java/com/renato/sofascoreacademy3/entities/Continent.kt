@@ -1,5 +1,11 @@
 package com.renato.sofascoreacademy3.entities
 
-enum class Continent {
-    EUROPE, AFRICA, ASIA, NORTH_AMERICA, SOUTH_AMERICA, ANTARCTICA, AUSTRALIA
+enum class Continent(val string: String) {
+    EUROPE("Europe"),
+    AFRICA("Africa"),
+    ASIA("Asia"),
+    NORTH_AMERICA("North America"),
+    SOUTH_AMERICA("South America"),
+    ANTARCTICA("Antarctica"),
+    AUSTRALIA("Australia")
 }
