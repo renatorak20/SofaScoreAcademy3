@@ -41,8 +41,7 @@ class ShowCompaniesFragment : Fragment() {
                 val textView = TextView(requireContext())
                 textView.text = item.toString()
                 linearLayout.addView(textView)
-                val divider = MaterialDivider(requireContext())
-                linearLayout.addView(divider)
+                linearLayout.addView(MaterialDivider(requireContext()))
             }
         }
     }

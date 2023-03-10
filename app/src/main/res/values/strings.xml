@@ -28,4 +28,8 @@
         <item name="antarctica">Antarctica</item>
         <item name="australia">Australia</item>
     </string-array>
+
+
+    <string name="company_public">Public</string>
+    <string name="company_private">Private</string>
 </resources>

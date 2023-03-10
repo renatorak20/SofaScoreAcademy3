@@ -1,157 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.CreateCompanyFragment">
+    tools:context=".ui.fragments.CreateCompanyFragment"
+    android:fillViewport="true">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_marginTop="0dp"
+            android:text="@string/create_company_title"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="@string/create_company_title"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/name_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/name"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/address_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/address"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/city_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/city"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/country_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/country"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/phone_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/phone"
-                android:inputType="phone"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/email_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/website_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/website"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/industry_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/industry"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/description_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/description"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
-            <EditText
-                android:id="@+id/year_field"
-                android:layout_width="161dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/year_founded"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:textColorHint="#757575"
-                android:importantForAutofill="no"
-                android:layout_marginTop="20dp"/>
+        <EditText
+            android:id="@+id/name_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="200dp"
-                android:layout_height="70dp"
-                android:layout_margin="10dp"
-                android:layout_marginTop="8dp">
+        <EditText
+            android:id="@+id/address_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/address"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/name_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:inputType="none"
-                    android:text="Select continent"
-                    android:dropDownHeight="300dp"/>
+        <EditText
+            android:id="@+id/city_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/city"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/address_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+        <EditText
+            android:id="@+id/country_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/country"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/city_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="100dp"
-                android:padding="10dp"
-                android:text="@string/create_button" />
+        <EditText
+            android:id="@+id/phone_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/phone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/country_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-        </LinearLayout>
-    </ScrollView>
+        <EditText
+            android:id="@+id/email_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/email"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/phone_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/website_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/website"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/email_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/industry_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/industry"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/website_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/description_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/description"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/industry_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/year_field"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="@string/year_founded"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/description_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/year_field"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:text="Select continent"
+                android:dropDownHeight="100dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:checkedButton="@+id/company_public"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+            <RadioButton
+                android:id="@+id/company_public"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/company_public" />
+
+            <RadioButton
+                android:id="@+id/company_private"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/company_private"
+                android:layout_weight="1"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="100dp"
+            android:padding="15dp"
+            android:text="@string/create_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

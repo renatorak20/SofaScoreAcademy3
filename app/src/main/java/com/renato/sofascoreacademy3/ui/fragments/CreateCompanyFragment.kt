@@ -65,8 +65,7 @@ class CreateCompanyFragment : Fragment() {
             industryField
         )
 
-        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, resources.getStringArray(R.array.continents))
-        menu.setAdapter(spinnerAdapter)
+
 
         return binding.root
     }
@@ -80,11 +79,14 @@ class CreateCompanyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, resources.getStringArray(R.array.continents))
+        menu.setAdapter(spinnerAdapter)
+
         createButton.setOnClickListener {
             if (areEmpty(fields)) {
                 Snackbar.make(view, "Please fill out all fields!", Snackbar.LENGTH_SHORT).show()
             } else {
-                val newCompany = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString(), "")
+                val newCompany = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString(), "", "")
                 viewModel.addCompany(newCompany)
                 resetFields(fields)
             }
