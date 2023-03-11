@@ -41,11 +41,10 @@ class ShowCompaniesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getList().observe(viewLifecycleOwner) { list ->
+        viewModel.getList().observe(viewLifecycleOwner) {
             adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value ?: mutableListOf())
             listView.adapter = adapter
             adapter.notifyDataSetChanged()
         }
-
     }
 }
