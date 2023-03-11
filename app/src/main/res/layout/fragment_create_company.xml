@@ -8,11 +8,10 @@
     tools:context=".ui.fragments.CreateCompanyFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:gravity="center"
+        android:id="@+id/constraint_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/constraint_layout">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
@@ -26,41 +25,37 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.renato.sofascoreacademy3.ui.customElements.CustomEditText
+            android:id="@+id/name_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:id="@+id/name_field"
             app:hint="@string/name"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.renato.sofascoreacademy3.ui.customElements.CustomEditText
+            android:id="@+id/address_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:id="@+id/address_field"
             app:hint="@string/address"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name_field"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.renato.sofascoreacademy3.ui.customElements.CustomEditText
+            android:id="@+id/city_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:id="@+id/city_field"
             app:hint="@string/city"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_field"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.renato.sofascoreacademy3.ui.customElements.CustomEditText
+            android:id="@+id/country_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:id="@+id/country_field"
             app:hint="@string/country"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city_field"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -69,48 +64,43 @@
             android:id="@+id/founder_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             app:hint="@string/founder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/country_field" />
 
         <com.renato.sofascoreacademy3.ui.customElements.CustomEditText
+            android:id="@+id/email_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:id="@+id/email_field"
             app:hint="@string/email"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/founder_field"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.renato.sofascoreacademy3.ui.customElements.CustomEditText
+            android:id="@+id/website_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:id="@+id/website_field"
-            android:layout_marginTop="20dp"
             app:hint="@string/website"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email_field"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.renato.sofascoreacademy3.ui.customElements.CustomEditText
+            android:id="@+id/description_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:id="@+id/description_field"
             app:hint="@string/description"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/website_field"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.renato.sofascoreacademy3.ui.customElements.CustomEditText
+            android:id="@+id/slogan_field"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:id="@+id/slogan_field"
             app:hint="@string/slogan"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description_field"
             app:layout_constraintEnd_toEndOf="parent"/>

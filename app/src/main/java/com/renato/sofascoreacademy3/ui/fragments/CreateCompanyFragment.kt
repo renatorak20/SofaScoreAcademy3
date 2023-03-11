@@ -17,6 +17,8 @@ class CreateCompanyFragment : Fragment() {
 
     private lateinit var viewModel: CompanyViewModel
 
+    private lateinit var constraintLayout: ConstraintLayout
+
     private lateinit var nameField: CustomEditText
     private lateinit var addressField: CustomEditText
     private lateinit var cityField: CustomEditText
@@ -26,13 +28,10 @@ class CreateCompanyFragment : Fragment() {
     private lateinit var websiteField: CustomEditText
     private lateinit var descriptionField: CustomEditText
     private lateinit var sloganField: CustomEditText
-    private lateinit var createButton: Button
-
     private lateinit var spinner: Spinner
     private lateinit var spinnerAdapter: ArrayAdapter<Industry>
+    private lateinit var createButton: Button
 
-
-    private lateinit var constraintLayout: ConstraintLayout
 
     private lateinit var binding: FragmentCreateCompanyBinding
 
@@ -88,18 +87,20 @@ class CreateCompanyFragment : Fragment() {
                 sloganField.getText(),
                 spinner.selectedItem as Industry,
                 getRadioSelectedValue())
+
             viewModel.addCompany(company)
+
             Toast.makeText(context, "Hurray, You successfully added new company!", Toast.LENGTH_SHORT).show()
+
             constraintLayout.resetFields()
         }
     }
 
     private fun getRadioSelectedValue() : String{
-        val type:String =
+        val type =
             when(binding.radioGroup.radioGroup.checkedRadioButtonId){
                 R.id.company_public -> "Public"
-                R.id.company_private -> "Private"
-                else -> "None"
+                else -> "Private"
             }
         return type
     }

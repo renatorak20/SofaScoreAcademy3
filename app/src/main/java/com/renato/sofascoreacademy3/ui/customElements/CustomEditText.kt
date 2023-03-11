@@ -1,6 +1,7 @@
 package com.renato.sofascoreacademy3.ui.customElements
 
 import android.content.Context
+import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -20,8 +21,7 @@ class CustomEditText(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             attrs,
             R.styleable.CustomEditText, 0, 0).apply {
             try {
-                val hint = getString(R.styleable.CustomEditText_hint)
-                binding.field.hint = hint
+                binding.field.hint = getString(R.styleable.CustomEditText_hint)
             } finally {
                 recycle()
             }
@@ -31,17 +31,13 @@ class CustomEditText(context: Context, attrs: AttributeSet) : ConstraintLayout(c
     fun getText() : String{
         return binding.field.text.toString()
     }
-    private fun getLenght():Int{
+    private fun getLength():Int{
         return getText().length
     }
     fun clear(){
         binding.field.text.clear()
     }
-
     fun isValid() : Boolean{
-        if(getLenght() < 4){
-            return false
-        }
-        return true
+        return getLength() >= 4
     }
 }

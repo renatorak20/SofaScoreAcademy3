@@ -15,7 +15,8 @@ class Company(
 ){
 
     override fun toString(): String {
-        return "Company -- \nname='$name'," +
+        return "Company -- " +
+                "\nname='$name'," +
                 "\n address='$address'," +
                 "\n city='$city'," +
                 "\n country='$country'," +
