@@ -25,13 +25,12 @@ class ShowCompaniesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(requireActivity())[CompanyViewModel::class.java]
 
         binding = FragmentShowCompaniesBinding.inflate(inflater, container, false)
 
         listView = binding.listView
-
         adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value ?: mutableListOf())
         listView.adapter = adapter
 
@@ -44,7 +43,6 @@ class ShowCompaniesFragment : Fragment() {
         viewModel.getList().observe(viewLifecycleOwner) {
             adapter = ArrayAdapter(requireContext(), R.layout.company_object, viewModel.companies.value ?: mutableListOf())
             listView.adapter = adapter
-            adapter.notifyDataSetChanged()
         }
     }
 }

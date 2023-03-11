@@ -5,13 +5,12 @@ class Company(
     val address: String,
     val city: String,
     val country: String,
-    val phone: String,
+    val founder: String,
     val email: String,
     val website: String,
-    val industry: String,
     val description: String,
-    val foundedYear: String,
-    val continent: String,
+    val slogan: String,
+    val industry: Industry,
     val type:String
 ){
 
@@ -20,13 +19,12 @@ class Company(
                 "\n address='$address'," +
                 "\n city='$city'," +
                 "\n country='$country'," +
-                "\n phone='$phone'," +
+                "\n founder='$founder'," +
                 "\n email='$email'," +
                 "\n website='$website'," +
-                "\n industry='$industry'," +
                 "\n description='$description'," +
-                "\n foundedYear='$foundedYear'" +
-                "\n continent='$continent'" +
+                "\n slogan='$slogan'" +
+                "\n industry='$industry'" +
                 "\n type='$type'"
     }
 }

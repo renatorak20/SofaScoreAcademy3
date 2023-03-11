@@ -9,7 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.renato.sofascoreacademy3.R
 import com.renato.sofascoreacademy3.databinding.FragmentCreateCompanyBinding
-import com.renato.sofascoreacademy3.entities.Continent
+import com.renato.sofascoreacademy3.entities.Company
+import com.renato.sofascoreacademy3.entities.Industry
 import com.renato.sofascoreacademy3.ui.customElements.CustomEditText
 
 class CreateCompanyFragment : Fragment() {
@@ -20,18 +21,16 @@ class CreateCompanyFragment : Fragment() {
     private lateinit var addressField: CustomEditText
     private lateinit var cityField: CustomEditText
     private lateinit var countryField: CustomEditText
-    private lateinit var phoneField: CustomEditText
+    private lateinit var founderField: CustomEditText
     private lateinit var emailField: CustomEditText
     private lateinit var websiteField: CustomEditText
-    private lateinit var industryField: CustomEditText
     private lateinit var descriptionField: CustomEditText
-    private lateinit var yearField: CustomEditText
+    private lateinit var sloganField: CustomEditText
     private lateinit var createButton: Button
 
-    private lateinit var spinner:Spinner
-    private lateinit var spinnerAdapter:ArrayAdapter<Continent>
+    private lateinit var spinner: Spinner
+    private lateinit var spinnerAdapter: ArrayAdapter<Industry>
 
-    private lateinit var radioGroup: ViewGroup
 
     private lateinit var constraintLayout: ConstraintLayout
 
@@ -41,7 +40,7 @@ class CreateCompanyFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentCreateCompanyBinding.inflate(inflater, container, false)
 
@@ -49,59 +48,76 @@ class CreateCompanyFragment : Fragment() {
         addressField = binding.addressField
         cityField = binding.cityField
         countryField = binding.countryField
-        phoneField = binding.phoneField
+        founderField = binding.founderField
         emailField = binding.emailField
         websiteField = binding.websiteField
-        industryField = binding.industryField
         descriptionField = binding.descriptionField
-        yearField = binding.foundedYearField
+        sloganField = binding.sloganField
         createButton = binding.button
         spinner = binding.spinner
 
         constraintLayout = binding.constraintLayout
 
-        radioGroup = binding.radioGroup
-
         viewModel = ViewModelProvider(requireActivity())[CompanyViewModel::class.java]
 
-        return binding.root
-    }
+        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, Industry.values())
+        spinner.adapter = spinnerAdapter
 
-    override fun onResume() {
-        super.onResume()
-        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, Continent.values())
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        spinnerAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, Continent.values())
-        spinner.adapter = spinnerAdapter
-
         createButton.setOnClickListener {
-           nameField.isValid()
-
-
-            /*if(constraintLayout.areAllFieldsValid()){
-                //val company = Company(nameField.text.toString(), addressField.text.toString(), cityField.text.toString(), countryField.text.toString(), phoneField.text.toString(), emailField.text.toString(), websiteField.text.toString(), industryField.text.toString(), descriptionField.text.toString(), yearField.text.toString(), spinner.selectedItem.toString(), binding.root.findViewById<RadioButton>(binding.radioGroup.checkedRadioButtonId).text.toString())
-                //viewModel.addCompany(company)
-                //constraintLayout.resetFields()
-            }*/
+            addCompany()
         }
-
     }
-/*
-    private fun ConstraintLayout.areAllFieldsValid(): Boolean{
-        this.children.filterIsInstance<CompanyInput>().forEach {
-            if(it.isValid()){
+
+    private fun addCompany(){
+        if (constraintLayout.areAllFieldsValid()) {
+            val company = Company(
+                nameField.getText(),
+                addressField.getText(),
+                cityField.getText(),
+                countryField.getText(),
+                founderField.getText(),
+                emailField.getText(),
+                websiteField.getText(),
+                descriptionField.getText(),
+                sloganField.getText(),
+                spinner.selectedItem as Industry,
+                getRadioSelectedValue())
+            viewModel.addCompany(company)
+            Toast.makeText(context, "Hurray, You successfully added new company!", Toast.LENGTH_SHORT).show()
+            constraintLayout.resetFields()
+        }
+    }
+
+    private fun getRadioSelectedValue() : String{
+        val type:String =
+            when(binding.radioGroup.radioGroup.checkedRadioButtonId){
+                R.id.company_public -> "Public"
+                R.id.company_private -> "Private"
+                else -> "None"
+            }
+        return type
+    }
+
+    private fun ConstraintLayout.areAllFieldsValid(): Boolean {
+        this.children.filterIsInstance<CustomEditText>().forEach {
+            if (!it.isValid()) {
+                Toast.makeText(context, "Please enter more than 3 characters in all fields!", Toast.LENGTH_SHORT).show()
                 return false
             }
         }
         return true
     }
-    private fun CompanyInputBinding.resetFields() {
-this.children.filterIsInstance<CompanyInputBinding>().forEach {
-    //it.text?.clear()
-}*/
+
+    private fun ConstraintLayout.resetFields() {
+        this.children.filterIsInstance<CustomEditText>().forEach {
+            it.clear()
+        }
+    }
 }
 
