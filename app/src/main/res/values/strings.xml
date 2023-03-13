@@ -1,6 +1,26 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">SofaScoreAcademy3</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="create_title">Create</string>
+    <string name="show_title">Show</string>
+
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="founder">Founder</string>
+    <string name="email">Email</string>
+    <string name="website">Website</string>
+    <string name="city">City</string>
+    <string name="slogan">Slogan</string>
+    <string name="description">Description</string>
+    <string name="country">Country</string>
+    <string name="industry">Industry</string>
+
+    <string name="create_button">Create</string>
+
+    <string name="create_company_title">Create a company</string>
+
+    <string name="company_public">Public</string>
+    <string name="company_private">Private</string>
+    <string name="company_type" tools:ignore="ExtraTranslation">Company type</string>
+
+    <string name="error" tools:ignore="ExtraTranslation">Please enter more than 3 characters!</string>
 </resources>
