@@ -1,17 +1,17 @@
 package com.renato.sofascoreacademy3.entities
 
 class Company(
-    val name: String,
-    val address: String,
-    val city: String,
-    val country: String,
-    val founder: String,
-    val email: String,
-    val website: String,
-    val description: String,
-    val slogan: String,
-    val industry: Industry,
-    val type:String
+    private val name: String,
+    private val address: String,
+    private val city: String,
+    private val country: String,
+    private val founder: String,
+    private val email: String,
+    private val website: String,
+    private val description: String,
+    private val yearFounded: Int,
+    private val industry: Industry,
+    private val type:String
 ){
 
     override fun toString(): String {
@@ -24,7 +24,7 @@ class Company(
                 "\n email='$email'," +
                 "\n website='$website'," +
                 "\n description='$description'," +
-                "\n slogan='$slogan'" +
+                "\n foundation year='$yearFounded'" +
                 "\n industry='$industry'" +
                 "\n type='$type'"
     }
