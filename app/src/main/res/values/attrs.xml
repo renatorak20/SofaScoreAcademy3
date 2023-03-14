@@ -2,5 +2,8 @@
 <resources>
     <declare-styleable name="CustomEditText">
         <attr name="hint" format="string"/>
+        <attr name="inputType" format="integer"/>
+        <attr name="error" format="boolean"/>
     </declare-styleable>
+
 </resources>
